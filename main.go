@@ -28,12 +28,12 @@ func main() {
 		meaning, err := GetMeaning(word)
 		if err != nil {
 			log.Printf("Error fetching meaning for %s: %v", word, err)
-			return c.Send("Sorry, I couldn't find the meaning of that word.")
+			return c.Reply("Sorry, I couldn't find the meaning of that word.")
 		}
 		if meaning == "" {
-			return c.Send("No definitions found for that word.")
+			return c.Reply("No definitions found for that word.")
 		}
-		return c.Send(meaning)
+		return c.Reply(meaning)
 	})
 
 	b.Start()
