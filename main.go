@@ -25,6 +25,8 @@ func main() {
 
 	b.Handle(tele.OnText, func(c tele.Context) error {
 		word := strings.Fields(c.Text())[0]
+		user := c.Chat()
+		log.Printf("user_id=%d first_name=%q word=%q", user.ID, user.FirstName, word)
 		meaning, err := GetMeaning(word)
 		if err != nil {
 			log.Printf("Error fetching meaning for %s: %v", word, err)
